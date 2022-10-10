@@ -15,11 +15,8 @@ function startTimer() {
     timer.textContent = 'Time Left : ' + timeRemain + ' sec';
     document.body.appendChild(timer);
 
-    if(timeRemain <= 0)  {
+    if(timeRemain <= 0 || score == 3)  {
         timer.textContent = 'Time Left : ' + timeRemain + ' sec';
-        clearInterval(timerInterval);
-        inputName();
-    } else if (score == 3) {
         clearInterval(timerInterval);
     }
   }, 1000);
