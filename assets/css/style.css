@@ -6,12 +6,6 @@ body {
   padding-top: 10%;
 }
 
-h1 {
-  font-family: Impact, Arial, Helvetica, sans-serif;
-  font-size: 2.5rem;
-}
-
-
 button {
   width: 100px;
   padding: 10px;
@@ -23,39 +17,42 @@ button {
   border-radius: 10px;
 }
 
-button:hover, 
-li:hover {
+button:hover, li:hover {
   background-color: rgb(161, 107, 199);
 }
 
+h1 {
+  font-family: Impact, Arial, Helvetica, sans-serif;
+  font-size: 2.5rem;
+}
 
 li {
-  padding: 5px;
-  width: 50%;
-  margin: 10px auto;
+  padding: 4px;
+  width: 40%;
+  margin: 8px auto;
   background-color: indigo;
-  border-radius: 10px;
-  text-align: left;
   color: white;
+  border-radius: 9px;
+  text-align: left;
   padding: 10px;
 }
 
 score {
-  padding: 5px;
-  width: 50%;
-  margin: 10px auto;
+  padding: 4px;
+  width: 40%;
+  margin: 8px auto;
   background-color: lightcoral;
-  border-radius: 10px;
-  text-align: left;
   color: white;
+  border-radius: 9px;
+  text-align: left;
   padding: 10px;
   display: block;
 }
 
 timer {
   position: absolute;
-  top: 3%;
-  Right: 3%;
+  top: 4%;
+  Right: 4%;
   color: lightslategray;
-  font-size: 10px;
+  font-size: 11px;
 }

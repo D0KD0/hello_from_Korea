@@ -1,7 +1,7 @@
-// variables clarification
+// start variables clarification
 var question = document.getElementById('title');
-var body = document.getElementById('body');
-var btn = document.querySelector('.button');
+var body = document.getElementById('description');
+var btn = document.querySelector('button');
 var score = 0;
 
 
@@ -16,14 +16,13 @@ function startTimer() {
     document.body.appendChild(timer);
 
     if(timeRemain <= 0)  {
-        timeRemain = 0;
         timer.textContent = 'Time Left : ' + timeRemain + ' sec';
         clearInterval(timerInterval);
         inputName();
     } else if (score == 3) {
         clearInterval(timerInterval);
     }
-}, 1000);
+  }, 1000);
 }
 
 // list clarification
@@ -38,7 +37,7 @@ var ol = document.createElement('ol');
 btn.addEventListener ('click', function () {
     startTimer();
 
-    //quiz 1
+    // quiz 1
     question.textContent = 'Where is capital of South Korea?';
 
     body.textContent = '';
@@ -64,7 +63,7 @@ btn.addEventListener ('click', function () {
 
             if(event.target.textContent == choice1.textContent) {
                 score ++;
-                secondquiz();
+                quizTwo();
             } else {
                 timeRemain -= 10;
                 
@@ -72,11 +71,11 @@ btn.addEventListener ('click', function () {
 
         })
     };
-}) ;
+});
 
 
     // quiz 2
-    function secondquiz(){
+    function quizTwo(){
 
         question.textContent = 'What is national flower of South Korea?';
 
@@ -99,22 +98,21 @@ btn.addEventListener ('click', function () {
             li[i].addEventListener('click', function (event) {
                 event.preventDefault();
 
-                if((event.target.textContent == choice2.textContent) && (timeRemain>0)) {
+                if((event.target.textContent == choice2.textContent) && (timeRemain > 0)) {
                     score ++;
-                    lastquiz();
+                    quizThree();
                 } else {
                     timeRemain -= 10;
-                    console.log(timeRemain);
                 }
                 
             });
         }
-};
+    };
     
     
 
     // quiz3
-    function lastquiz(){
+    function quizThree(){
 
         question.textContent = 'Which King invented Hangul?';
     
@@ -137,10 +135,10 @@ btn.addEventListener ('click', function () {
             li[i].addEventListener('click', function (event) {
                 event.preventDefault();
     
-                if((event.target.textContent == choice4.textContent) && (timeRemain>0)) {
+                if((event.target.textContent == choice4.textContent) && (timeRemain > 0)) {
                     score ++;
                     inputName();
-                } else if ((event.target.textContent != choice4.textContent) && (timeRemain>0)) {
+                } else if ((event.target.textContent != choice4.textContent) && (timeRemain > 0)) {
                     timeRemain -= 10;
                 }
             })
@@ -153,10 +151,10 @@ btn.addEventListener ('click', function () {
 
     function inputName (){
         question.textContent = 'All done!';
-        body.textContent = "Your final score is " +timeRemain +' seond.';
+        body.textContent = "Your final score is " +timeRemain +' seond(s).';
         
         label.textContent = 'Enter your initial: ';
-        input.setAttribute('width', '50%');
+        input.setAttribute('width', '40%');
         document.body.appendChild(label).appendChild(input);
 
         var submitbtn = document.createElement('button');
@@ -164,26 +162,26 @@ btn.addEventListener ('click', function () {
         document.body.appendChild(submitbtn);
         
         submitbtn.addEventListener ('click', function(){
-            localStorage.setItem("name", input.value);
+            localStorage.setItem("initial", input.value);
             localStorage.setItem("score", timeRemain);
             submitbtn.remove();
-            finalscore();
+            quizSummary();
         });
     }
 
 
-    function finalscore () {
-        var myscore = localStorage.getItem("score");
-        var myname = localStorage.getItem("name");
+    function quizSummary () {
+        var timeResult = localStorage.getItem("score");
+        var myinitial = localStorage.getItem("initial");
 
         input.textContent = "";
         label.textContent = "";
         body.textContent = "";  
 
-        question.textContent = 'Highscores';
+        question.textContent = 'Records';
 
         var scoreboard = document.createElement('score');
-        scoreboard.textContent = myname + ' - ' + myscore + ' second';
+        scoreboard.textContent = myinitial + ' - ' + timeResult + ' second(s)';
 
         document.body.append(scoreboard);
 
