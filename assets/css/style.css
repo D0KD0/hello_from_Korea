@@ -35,22 +35,27 @@ li {
   margin: 10px auto;
   background-color: indigo;
   border-radius: 10px;
-  cursor: grab; 
   text-align: left;
   color: white;
   padding: 10px;
 }
 
-time {
-  position: absolute;
-  top: 3%;
-  right : 3%;
+score {
+  padding: 5px;
+  width: 50%;
+  margin: 10px auto;
+  background-color: lightcoral;
+  border-radius: 10px;
+  text-align: left;
+  color: white;
+  padding: 10px;
+  display: block;
 }
 
-div {
+timer {
   position: absolute;
   top: 3%;
-  left : 3%;
+  Right: 3%;
   color: lightslategray;
   font-size: 10px;
 }
