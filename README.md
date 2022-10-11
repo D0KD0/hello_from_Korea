@@ -1,4 +1,4 @@
-# can_u_answer_this
+# hello_from_Korea
 
 ## Description
 In this project, I made a quiz about South Korea by using JavaScript.
