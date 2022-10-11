@@ -30,6 +30,8 @@ var ol = document.createElement('ol');
     var choice4 = document.createElement('li');
 
 
+var currentFunction = null;
+
 // quiz clarification
 btn.addEventListener ('click', function () {
     startTimer();
@@ -50,23 +52,23 @@ btn.addEventListener ('click', function () {
         document.body.children[1].children[0].appendChild(choice4);
 
     btn.remove();   
-  
+   
     var li = document.querySelectorAll('li');
 
+    currentFunction = function(event) {
+        event.preventDefault();
+
+        if(event.target.textContent == choice1.textContent) {
+            score ++;
+            quizTwo();
+        } else {
+            timeRemain -= 10;                
+        }
+    }
+    
     for(i=0; i<li.length; i++){
-    var eachli = li[i]
-        li[i].addEventListener('click', function (event) {
-            event.preventDefault();
-
-            if(event.target.textContent == choice1.textContent) {
-                score ++;
-                quizTwo();
-            } else {
-                timeRemain -= 10;
-                
-            }
-
-        })
+    var eachli = li[i]  
+        li[i].addEventListener('click', currentFunction)
     };
 });
 
@@ -90,22 +92,25 @@ btn.addEventListener ('click', function () {
 
         var li = document.querySelectorAll('li');
 
+        var newFunction = function (event) {
+            event.preventDefault();
+
+            if((event.target.textContent == choice2.textContent) && (timeRemain > 0)) {
+                score ++; 
+                quizThree();
+            } else {
+                timeRemain -= 10;
+            }               
+        }
+
         for(i=0; i<li.length; i++){
         var eachli = li[i]
-            li[i].addEventListener('click', function (event) {
-                event.preventDefault();
-
-                if((event.target.textContent == choice2.textContent) && (timeRemain > 0)) {
-                    score ++;
-                    quizThree();
-                } else {
-                    timeRemain -= 10;
-                }
-                
-            });
+            li[i].removeEventListener('click', currentFunction); 
+            li[i].addEventListener('click', newFunction);
         }
+
+        currentFunction = newFunction;
     };
-    
     
 
     // quiz3
@@ -129,6 +134,7 @@ btn.addEventListener ('click', function () {
     
         for(i=0; i<li.length; i++){
         var eachli = li[i]
+            li[i].removeEventListener('click', currentFunction);
             li[i].addEventListener('click', function (event) {
                 event.preventDefault();
     
